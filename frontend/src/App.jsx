@@ -1,7 +1,7 @@
-import Sidebar from './assets'
-import Header from './components/Header'
-import Carrusel from './components/Carrusel'
-import MiColeccion from './components/MiColeccion'
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import Carrusel from "./components/Carrusel";
+import './App.css'
 
 function App() {
   return (
@@ -11,7 +11,6 @@ function App() {
       <div className="contenido-principal">
         <Header />
         <Carrusel />
-        <MiColeccion />
       </div>
     </div>
   )

@@ -1,15 +1,16 @@
 function Sidebar() {
   return (
-
-    <div class="sidebar">
-      <div class="Home-icon">🏠</div>
-      <div class="Library-icon">📚</div>
-      <div class="Reseñas-icon">⭐</div>
-      <div class="Estadisticas-icon">📊</div>
-      <div class="Juegos-icon">➕</div>
-      <div class="Settings-icon">⚙️</div>
+    <div className="sidebar">
+      <div className="logo">🎮</div>
+      <nav>
+        <button className="sidebar-btn">🏠 Inicio</button>
+        <button className="sidebar-btn">📚 Biblioteca</button>
+        <button className="sidebar-btn">⭐ Favoritos</button>
+        <button className="sidebar-btn">📊 Estadísticas</button>
+        <button className="sidebar-btn">➕ Agregar</button>
+        <button className="sidebar-btn">⚙️ Config</button>
+      </nav>
     </div>
-
   )
 }
 
