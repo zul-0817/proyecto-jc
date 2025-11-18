@@ -1,0 +1,140 @@
+/* ========================================
+   SIDEBAR - GameTracker
+   Paleta de colores morados/rosa
+======================================== */
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 70px;
+  z-index: 1000;
+  
+  /* Gradiente morado de tu diseño */
+  background: linear-gradient(
+    180deg, 
+    #6d28d9 0%,
+    #3d1f63 100%
+  );
+  
+  backdrop-filter: blur(10px);
+  
+  border-radius: 0 40px 40px 0;
+  border-right: 3px solid rgba(167, 139, 202, 0.3);
+  border-bottom: 3px solid rgba(167, 139, 202, 0.3);
+  
+  box-shadow: 
+    0 8px 32px rgba(109, 40, 217, 0.5),
+    0 0 60px rgba(109, 40, 217, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.sidebar.open {
+  width: 240px;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-bottom: 1px solid rgba(167, 139, 202, 0.2);
+}
+
+.sidebar-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(233, 30, 140, 0.6);
+  transition: transform 0.3s;
+}
+
+.toggle-btn {
+  background: transparent;
+  border: none;
+  color: #e0d5ff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s;
+}
+
+.toggle-btn:hover {
+  color: #ffffff;
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px rgba(233, 30, 140, 1));
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 10px;
+}
+
+.sidebar-button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 14px 16px;
+  
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  
+  color: #e0d5ff;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sidebar-button .icon {
+  font-size: 24px;
+  min-width: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-button .text {
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar.open .sidebar-button .text {
+  opacity: 1;
+}
+
+.sidebar-button:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(167, 139, 202, 0.2) 0%,
+    rgba(233, 30, 140, 0.2) 100%
+  );
+  color: #ffffff;
+  transform: translateX(6px);
+  box-shadow: 
+    0 4px 20px rgba(233, 30, 140, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-button.active {
+  background: linear-gradient(
+    90deg,
+    rgba(167, 139, 202, 0.35) 0%,
+    rgba(233, 30, 140, 0.35) 100%
+  );
+  color: #ffffff;
+  border-left: 4px solid #e91e8c;
+  padding-left: 12px;
+  box-shadow: 0 4px 25px rgba(233, 30, 140, 0.6);
+}

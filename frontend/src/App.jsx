@@ -1,16 +1,20 @@
-import Sidebar from "./components/Sidebar";
-import Header from "./components/Header";
-import Carrusel from "./components/Carrusel";
+import { useState } from 'react'
+import Sidebar from './Components/Sidebar'
 import './App.css'
 
 function App() {
+  const [vistaActual, setVistaActual] = useState('inicio')
+
   return (
     <div className="app">
-      <Sidebar />
+      <Sidebar 
+        vistaActual={vistaActual} 
+        cambiarVista={setVistaActual} 
+      />
       
       <div className="contenido-principal">
-        <Header />
-        <Carrusel />
+        <h1>🎮 GameTracker</h1>
+        <p>La aplicación está funcionando</p>
       </div>
     </div>
   )
