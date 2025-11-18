@@ -1,0 +1,310 @@
+/* ========================================
+   MIS RESEÑAS
+======================================== */
+
+.reseñas-container {
+  width: 100%;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.reseñas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.reseñas-titulo {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 4px;
+  background: linear-gradient(90deg, #ffffff 0%, #a78bca 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.reseñas-subtitulo {
+  font-size: 14px;
+  color: #a78bca;
+  font-weight: 600;
+}
+
+.btn-agregar-reseña {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #e91e8c 0%, #6d28d9 100%);
+  border: none;
+  border-radius: 50px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 20px rgba(233, 30, 140, 0.4);
+}
+
+.btn-agregar-reseña:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 30px rgba(233, 30, 140, 0.6);
+}
+
+/* ========================================
+   LISTA DE RESEÑAS
+======================================== */
+
+.reseñas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ========================================
+   TARJETA DE RESEÑA
+======================================== */
+
+.reseña-card {
+  display: flex;
+  gap: 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(61, 37, 99, 0.4) 0%,
+    rgba(26, 15, 46, 0.6) 100%
+  );
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(167, 139, 202, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  animation: slideIn 0.5s ease-out;
+}
+
+.reseña-card:hover {
+  border-color: rgba(233, 30, 140, 0.5);
+  box-shadow: 0 8px 30px rgba(109, 40, 217, 0.3);
+  transform: translateY(-4px);
+}
+
+/* ========================================
+   IMAGEN DEL JUEGO
+======================================== */
+
+.reseña-imagen {
+  flex: 0 0 120px;
+  height: 160px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(167, 139, 202, 0.3);
+}
+
+.reseña-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.reseña-card:hover .reseña-imagen img {
+  transform: scale(1.1);
+}
+
+/* ========================================
+   CONTENIDO DE LA RESEÑA
+======================================== */
+
+.reseña-contenido {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.reseña-header-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.reseña-juego {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Estrellas */
+.estrellas {
+  display: flex;
+  gap: 4px;
+}
+
+.estrella {
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.estrella.llena {
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+}
+
+.estrella.vacia {
+  opacity: 0.3;
+  filter: grayscale(100%);
+}
+
+.reseña-card:hover .estrella.llena {
+  transform: scale(1.1);
+}
+
+/* Texto de la reseña */
+.reseña-texto {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #e0d5ff;
+  flex: 1;
+}
+
+/* ========================================
+   FOOTER DE LA RESEÑA
+======================================== */
+
+.reseña-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(167, 139, 202, 0.2);
+}
+
+.reseña-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  font-size: 13px;
+  color: #a78bca;
+  font-weight: 600;
+  padding: 6px 12px;
+  background: rgba(61, 37, 99, 0.5);
+  border-radius: 12px;
+}
+
+.meta-item.recomendado {
+  background: rgba(0, 255, 136, 0.2);
+  color: #00ff88;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+/* Botones de acción */
+.reseña-acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-accion {
+  width: 36px;
+  height: 36px;
+  background: rgba(61, 37, 99, 0.5);
+  border: 2px solid rgba(167, 139, 202, 0.3);
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-accion:hover {
+  transform: scale(1.1);
+  border-color: rgba(167, 139, 202, 0.6);
+}
+
+.btn-accion.editar:hover {
+  background: rgba(109, 40, 217, 0.5);
+  border-color: #6d28d9;
+}
+
+.btn-accion.eliminar:hover {
+  background: rgba(255, 0, 0, 0.3);
+  border-color: #ff0000;
+}
+
+/* ========================================
+   ANIMACIONES
+======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+  .reseñas-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .btn-agregar-reseña {
+    width: 100%;
+  }
+
+  .reseñas-titulo {
+    font-size: 24px;
+  }
+
+  .reseña-card {
+    flex-direction: column;
+  }
+
+  .reseña-imagen {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 200px;
+  }
+
+  .reseña-header-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reseña-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

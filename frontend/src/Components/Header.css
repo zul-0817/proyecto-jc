@@ -1,0 +1,164 @@
+/* ========================================
+   HEADER - GameTracker
+======================================== */
+
+.header {
+  width: 100%;
+  padding: 30px 0;
+  margin-bottom: 30px;
+  background: linear-gradient(
+    135deg,
+    rgba(61, 37, 99, 0.3) 0%,
+    rgba(26, 15, 46, 0.2) 100%
+  );
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 2px solid rgba(167, 139, 202, 0.2);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding: 0 40px;
+}
+
+/* ========================================
+   SECCIÓN DE SALUDO
+======================================== */
+
+.saludo-section {
+  flex: 1;
+}
+
+.saludo {
+  font-size: 32px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.2;
+}
+
+.nombre-usuario {
+  background: linear-gradient(90deg, #e91e8c 0%, #6d28d9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(233, 30, 140, 0.5));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.seccion-actual {
+  font-size: 14px;
+  font-weight: 600;
+  color: #a78bca;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* ========================================
+   BARRA DE BÚSQUEDA
+======================================== */
+
+.busqueda-header {
+  flex: 0 0 400px;
+}
+
+.input-buscar-header {
+  width: 100%;
+  padding: 14px 24px;
+  background: rgba(61, 37, 99, 0.5);
+  border: 2px solid rgba(167, 139, 202, 0.3);
+  border-radius: 50px;
+  color: #ffffff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input-buscar-header::placeholder {
+  color: rgba(224, 213, 255, 0.6);
+}
+
+.input-buscar-header:focus {
+  border-color: #e91e8c;
+  background: rgba(61, 37, 99, 0.7);
+  box-shadow: 
+    0 0 30px rgba(233, 30, 140, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   ANIMACIONES
+======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 20px rgba(233, 30, 140, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 30px rgba(233, 30, 140, 0.8));
+  }
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1024px) {
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 0 30px;
+  }
+
+  .busqueda-header {
+    flex: 1;
+    width: 100%;
+  }
+
+  .saludo {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 20px 0;
+    margin-bottom: 20px;
+  }
+
+  .header-content {
+    padding: 0 20px;
+  }
+
+  .saludo {
+    font-size: 24px;
+  }
+
+  .seccion-actual {
+    font-size: 12px;
+  }
+
+  .input-buscar-header {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
