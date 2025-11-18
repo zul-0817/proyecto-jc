@@ -2,6 +2,11 @@
    SIDEBAR - GameTracker
    Paleta de colores morados/rosa
 ======================================== */
+.icon-img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
 
 .sidebar {
   position: fixed;

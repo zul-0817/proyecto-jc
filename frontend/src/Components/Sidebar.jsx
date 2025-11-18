@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import './Sidebar.css';
+import './src/assets'
+import HomeIcon from './assets/'
 
 const Sidebar = ({ vistaActual, cambiarVista }) => {
   const [open, setOpen] = useState(false);
 
   // Menú de navegación
   const menuItems = [
-    { id: 'inicio', icon: '🏠', texto: 'Inicio' },
+    { id: 'inicio', icon: 'Homeicon', texto: 'Inicio' },
     { id: 'biblioteca', icon: '📚', texto: 'Biblioteca' },
     { id: 'favoritos', icon: '⭐', texto: 'Favoritos' },
     { id: 'estadisticas', icon: '📊', texto: 'Estadísticas' },
