@@ -1,0 +1,438 @@
+/* ========================================
+   MODAL OVERLAY
+======================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ========================================
+   MODAL CONTENT
+======================================== */
+
+.modal-content {
+  background: linear-gradient(
+    135deg,
+    rgba(61, 37, 99, 0.95) 0%,
+    rgba(26, 15, 46, 0.95) 100%
+  );
+  border: 2px solid rgba(167, 139, 202, 0.3);
+  border-radius: 24px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 
+    0 20px 60px rgba(109, 40, 217, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: slideUp 0.4s ease;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: rgba(61, 37, 99, 0.3);
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #e91e8c, #6d28d9);
+  border-radius: 4px;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 28px;
+  border-bottom: 2px solid rgba(167, 139, 202, 0.2);
+}
+
+.modal-titulo {
+  font-size: 26px;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(90deg, #ffffff 0%, #a78bca 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-cerrar {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(167, 139, 202, 0.3);
+  border-radius: 12px;
+  color: #e0d5ff;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-cerrar:hover {
+  background: rgba(255, 71, 87, 0.3);
+  border-color: #ff4757;
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+/* ========================================
+   FORMULARIO
+======================================== */
+
+.formulario-juego {
+  padding: 28px;
+}
+
+.error-message {
+  background: rgba(255, 71, 87, 0.2);
+  border: 2px solid #ff4757;
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #ff6b9d;
+  font-weight: 600;
+  margin-bottom: 20px;
+  animation: shake 0.5s ease;
+}
+
+/* ========================================
+   GRUPOS DE FORMULARIO
+======================================== */
+
+.form-group {
+  margin-bottom: 24px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #a78bca;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.label-icon {
+  font-size: 18px;
+}
+
+/* ========================================
+   INPUTS Y SELECTS
+======================================== */
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="url"],
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(61, 37, 99, 0.3);
+  border: 2px solid rgba(167, 139, 202, 0.3);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #e91e8c;
+  background: rgba(61, 37, 99, 0.5);
+  box-shadow: 0 0 0 3px rgba(233, 30, 140, 0.2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(167, 139, 202, 0.5);
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ========================================
+   PREVIEW DE IMAGEN
+======================================== */
+
+.imagen-preview {
+  margin-top: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(167, 139, 202, 0.3);
+  max-width: 300px;
+}
+
+.imagen-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========================================
+   RANGE SLIDER (Progreso)
+======================================== */
+
+.range-slider {
+  width: 100%;
+  height: 8px;
+  background: rgba(61, 37, 99, 0.5);
+  border-radius: 10px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #e91e8c, #6d28d9);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(233, 30, 140, 0.6);
+  transition: all 0.3s ease;
+}
+
+.range-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 6px 20px rgba(233, 30, 140, 0.8);
+}
+
+.range-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(135deg, #e91e8c, #6d28d9);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(233, 30, 140, 0.6);
+}
+
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #a78bca;
+}
+
+/* ========================================
+   CHECKBOX
+======================================== */
+
+.checkbox-group {
+  margin-bottom: 28px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  position: relative;
+  padding: 16px;
+  background: rgba(61, 37, 99, 0.3);
+  border: 2px solid rgba(167, 139, 202, 0.3);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.checkbox-label:hover {
+  border-color: rgba(167, 139, 202, 0.5);
+  background: rgba(61, 37, 99, 0.5);
+}
+
+.checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  width: 24px;
+  height: 24px;
+  background: rgba(61, 37, 99, 0.5);
+  border: 2px solid rgba(167, 139, 202, 0.5);
+  border-radius: 6px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .checkmark {
+  background: linear-gradient(135deg, #e91e8c, #6d28d9);
+  border-color: #e91e8c;
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ .checkmark::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.checkbox-text {
+  color: #e0d5ff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ========================================
+   BOTONES DE ACCIÓN
+======================================== */
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 2px solid rgba(167, 139, 202, 0.2);
+}
+
+.btn-cancelar,
+.btn-guardar {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-cancelar {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(167, 139, 202, 0.3);
+  color: #e0d5ff;
+}
+
+.btn-cancelar:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(167, 139, 202, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-guardar {
+  background: linear-gradient(135deg, #e91e8c 0%, #6d28d9 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(233, 30, 140, 0.4);
+}
+
+.btn-guardar:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 30px rgba(233, 30, 140, 0.6);
+}
+
+.btn-guardar:disabled,
+.btn-cancelar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   ANIMACIONES
+======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+  .modal-content {
+    max-height: 95vh;
+    border-radius: 16px;
+  }
+
+  .modal-header {
+    padding: 20px;
+  }
+
+  .modal-titulo {
+    font-size: 22px;
+  }
+
+  .formulario-juego {
+    padding: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .btn-cancelar,
+  .btn-guardar {
+    width: 100%;
+  }
+}
