@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { obtenerJuegos } from './services/Api.js'
 import Sidebar from './components/Sidebar'
 import Header from './components/Header'
 import Busqueda from './components/Busqueda'
@@ -7,10 +8,35 @@ import Coleccion from './Components/Coleccion'
 import Reseñas from './components/Reseñas'
 import Estadisticas from './components/Estadisticas'
 import './App.css'
-
 function App() {
-  // Estado para controlar qué vista mostrar
   const [vistaActual, setVistaActual] = useState('inicio')
+  const [JEjemplo, setJEjemplo] = useState([])
+
+  // ⭐ Cargar juegos desde el backend al iniciar
+  useEffect(() => {
+    const cargarJuegos = async () => {
+      try {
+        const juegos = await obtenerJuegos()
+        console.log('Juegos cargados:', juegos)
+        setJEjemplo(juegos)
+      } catch (error) {
+        console.error('Error:', error)
+        // Si falla, usar datos de ejemplo
+        setJEjemplo([
+          {
+            id: 1,
+            titulo: 'GTA V',
+            imagen: '/juegos/gta5.jpg',
+            progreso: 50,
+            genero: 'Acción',
+            plataforma: 'PlayStation'
+          }
+        ])
+      }
+    }
+    
+    cargarJuegos()
+  }, [])
 
   // Datos de ejemplo para los juegos
   const juegosEjemplo = [

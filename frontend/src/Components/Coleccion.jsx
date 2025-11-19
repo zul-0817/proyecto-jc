@@ -1,9 +1,32 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { obtenerJuegos, eliminarJuego } from '../services/api'
 import Tarjetajuego from './Tarjetajuego'
 import './Coleccion.css'
 
-function Coleccion({ juegos }) {
+function Coleccion() {
+  const [juegos, setJuegos] = useState([])
   const [filtroGenero, setFiltroGenero] = useState('todos')
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  // Cargar juegos al montar el componente
+  useEffect(() => {
+    cargarJuegos()
+  }, [])
+
+  const cargarJuegos = async () => {
+    try {
+      setLoading(true)
+      const data = await obtenerJuegos()
+      setJuegos(data)
+      setError(null)
+    } catch (err) {
+      console.error('Error al cargar juegos:', err)
+      setError('No se pudieron cargar los juegos. Verifica que el backend esté corriendo.')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   // Filtrar juegos
   const juegosFiltrados = filtroGenero === 'todos' 
@@ -16,6 +39,47 @@ function Coleccion({ juegos }) {
   const handleJuegoClick = (juego) => {
     console.log('Juego seleccionado:', juego)
     // Aquí puedes agregar navegación o abrir modal
+  }
+
+  const handleEliminarJuego = async (id) => {
+    if (window.confirm('¿Estás segura de eliminar este juego?')) {
+      try {
+        await eliminarJuego(id)
+        // Recargar juegos después de eliminar
+        cargarJuegos()
+      } catch (err) {
+        console.error('Error al eliminar juego:', err)
+        alert('No se pudo eliminar el juego')
+      }
+    }
+  }
+
+  // Mostrar loader mientras carga
+  if (loading) {
+    return (
+      <div className="coleccion-container">
+        <div className="loading-container">
+          <div className="spinner"></div>
+          <p>Cargando juegos...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // Mostrar error si hay
+  if (error) {
+    return (
+      <div className="coleccion-container">
+        <div className="error-container">
+          <p className="emoji-grande">⚠️</p>
+          <h3>Error al cargar</h3>
+          <p>{error}</p>
+          <button className="btn-primary" onClick={cargarJuegos}>
+            Reintentar
+          </button>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -52,9 +116,10 @@ function Coleccion({ juegos }) {
         <div className="grid-juegos">
           {juegosFiltrados.map(juego => (
             <Tarjetajuego 
-              key={juego.id} 
+              key={juego._id} 
               juego={juego}
               onClick={handleJuegoClick}
+              onDelete={handleEliminarJuego}
             />
           ))}
         </div>
