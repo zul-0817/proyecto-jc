@@ -1,13 +1,20 @@
 import './Tarjetajuego.css'
 
 function Tarjetajuego({ juego, onClick }) {
+  // ⬅️ CAMBIO: Imagen por defecto
+  const imagenPorDefecto = '/juegos/default.png';
+  
   return (
     <div className="tarjeta-juego" onClick={() => onClick && onClick(juego)}>
       {/* Imagen del juego */}
       <div className="tarjeta-imagen">
         <img 
-          src={juego.imagen || '/placeholder-game.jpg'} 
+          src={juego.imagenPortada || juego.imagen || imagenPorDefecto}
           alt={juego.titulo}
+          onError={(e) => {
+            // ⬅️ NUEVO: Si la imagen falla al cargar, usar default
+            e.target.src = imagenPorDefecto;
+          }}
         />
         
         {/* Badge de completado */}
