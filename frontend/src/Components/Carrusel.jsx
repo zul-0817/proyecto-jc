@@ -32,10 +32,6 @@ function Carrusel() {
     }
   ]
 
-  const cambiarSlide = (indice) => {
-    setIndiceActivo(indice)
-  }
-
   const siguiente = () => {
     setIndiceActivo((prev) => (prev + 1) % juegosDestacados.length)
   }
@@ -49,7 +45,6 @@ function Carrusel() {
   return (
     <div className="carrusel-container">
       <div className="carrusel">
-        {/* Juego destacado */}
         <div className="carrusel-contenido">
           <div 
             className="carrusel-imagen"
@@ -89,21 +84,7 @@ function Carrusel() {
           </button>
         </div>
 
-        {/* Puntos de navegación */}
-        <div className="carrusel-puntos">
-          {juegosDestacados.map((juego, indice) => (
-            <button
-              key={juego.id}
-              className={`punto ${indice === indiceActivo ? 'activo' : ''}`}
-              onClick={() => cambiarSlide(indice)}
-              style={{
-                backgroundColor: indice === indiceActivo 
-                  ? juego.color 
-                  : 'rgba(167, 139, 202, 0.3)'
-              }}
-            />
-          ))}
-        </div>
+        {/* Puntos eliminados - ya no aparecen */}
       </div>
     </div>
   )

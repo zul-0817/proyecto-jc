@@ -5,7 +5,7 @@ import Header from './components/Header'
 import Busqueda from './components/Busqueda'
 import Carrusel from './components/Carrusel'
 import Coleccion from './Components/Coleccion'
-import Reseñas from './components/Reseñas'
+import Reseñas from './Components/Reseñas.jsx'
 import Estadisticas from './components/Estadisticas'
 import './App.css'
 function App() {

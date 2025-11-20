@@ -328,4 +328,4 @@ function FormularioJuego({ juegoEditar, onClose, onSuccess }) {
   );
 }
 
-export default formulariojuego;
+export default FormularioJuego;
