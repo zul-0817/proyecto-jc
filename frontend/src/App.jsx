@@ -1,135 +1,59 @@
-import { useState, useEffect } from 'react'
-import { obtenerJuegos } from './services/Api.js'
-import Sidebar from './components/Sidebar'
-import Header from './components/Header'
-import Busqueda from './components/Busqueda'
-import Carrusel from './components/Carrusel'
-import Coleccion from './Components/Coleccion'
-import Reseñas from './Components/Reseñas.jsx'
-import Estadisticas from './components/Estadisticas'
-import './App.css'
+import { useState } from 'react';
+import Sidebar from './Components/Sidebar';
+import Header from './Components/Header';
+import Busqueda from './Components/Busqueda';
+import Carrusel from './Components/Carrusel';
+import Coleccion from './Components/Coleccion';
+import Reseñas from './Components/Reseñas';
+import FormularioReseña from './Components/formularioreseña';
+import Estadisticas from './Components/Estadisticas';
+import './App.css';
+
 function App() {
-  const [vistaActual, setVistaActual] = useState('inicio')
-  const [JEjemplo, setJEjemplo] = useState([])
-
-  // ⭐ Cargar juegos desde el backend al iniciar
-  useEffect(() => {
-    const cargarJuegos = async () => {
-      try {
-        const juegos = await obtenerJuegos()
-        console.log('Juegos cargados:', juegos)
-        setJEjemplo(juegos)
-      } catch (error) {
-        console.error('Error:', error)
-        // Si falla, usar datos de ejemplo
-        setJEjemplo([
-          {
-            id: 1,
-            titulo: 'GTA V',
-            imagen: '/juegos/gta5.jpg',
-            progreso: 50,
-            genero: 'Acción',
-            plataforma: 'PlayStation'
-          }
-        ])
-      }
-    }
-    
-    cargarJuegos()
-  }, [])
-
-  // Datos de ejemplo para los juegos
-  const juegosEjemplo = [
-    {
-      id: 1,
-      titulo: 'GTA V',
-      imagen: '/juegos/gta5.jpg',
-      progreso: 50,
-      genero: 'Acción',
-      plataforma: 'PlayStation'
-    },
-    {
-      id: 2,
-      titulo: 'Hollow Knight: Silksong',
-      imagen: '/juegos/silksong.jpg',
-      progreso: 30,
-      genero: 'Acción',
-      plataforma: 'Switch'
-    },
-    {
-      id: 3,
-      titulo: 'Mortal Kombat',
-      imagen: '/juegos/mk.jpg',
-      progreso: 100,
-      genero: 'Pelea',
-      plataforma: 'PlayStation'
-    },
-    {
-      id: 4,
-      titulo: 'Injustice',
-      imagen: '/juegos/injustice.jpg',
-      progreso: 75,
-      genero: 'Pelea',
-      plataforma: 'Xbox'
-    }
-  ]
-
-  // Función para renderizar el contenido según la vista
-  const renderContenido = () => {
-    switch(vistaActual) {
-      case 'inicio':
-        return (
-          <>
-            <Carrusel />
-            <Coleccion juegos={juegosEjemplo} />
-            <Reseñas />
-          </>
-        )
-      
-      case 'biblioteca':
-        return (
-          <>
-            <Busqueda />
-            <Coleccion juegos={juegosEjemplo} />
-          </>
-        )
-      
-      case 'estadisticas':
-        return <Estadisticas />
-      
-      case 'reseñas':
-        return <Reseñas />
-      
-      default:
-        return (
-          <>
-            <Carrusel />
-            <Coleccion juegos={juegosEjemplo} />
-          </>
-        )
-    }
-  }
+  const [vistaActual, setVistaActual] = useState('inicio');
 
   return (
     <div className="app">
-      {/* Sidebar - Menú lateral fijo */}
-      <Sidebar 
-        vistaActual={vistaActual} 
-        cambiarVista={setVistaActual} 
-      />
+      <Sidebar vistaActual={vistaActual} cambiarVista={setVistaActual} />
       
-      {/* Contenido principal */}
       <div className="contenido-principal">
-        {/* Header con saludo y búsqueda */}
         <Header />
         
-        {/* Contenido dinámico según la vista seleccionada */}
-        <main className="contenido">
-          {renderContenido()}
-        </main>
+        {/* INICIO - Home con carrusel y reseñas destacadas */}
+        {vistaActual === 'inicio' && (
+          <>
+            <Busqueda />
+            <Carrusel />
+            {/* Aquí puedes agregar un preview de reseñas destacadas si quieres */}
+          </>
+        )}
+        
+        {/* BIBLIOTECA - Búsqueda y colección de juegos */}
+        {vistaActual === 'biblioteca' && (
+          <>
+            <Busqueda />
+            <Coleccion />
+          </>
+        )}
+        
+        {/* RESEÑAS - Ver todas las reseñas */}
+        {vistaActual === 'resenas' && <Reseñas />}
+        
+        {/* AGREGAR RESEÑA - Formulario para nueva reseña */}
+        {vistaActual === 'agregar-resena' && (
+          <div style={{ padding: '20px' }}>
+            <FormularioReseña 
+              onClose={() => setVistaActual('resenas')}
+              onSuccess={() => setVistaActual('resenas')}
+            />
+          </div>
+        )}
+        
+        {/* ESTADÍSTICAS */}
+        {vistaActual === 'estadisticas' && <Estadisticas />}
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

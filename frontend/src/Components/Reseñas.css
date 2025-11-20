@@ -1,8 +1,8 @@
 /* ========================================
-   MIS RESEÑAS
+   CONTENEDOR PRINCIPAL
 ======================================== */
 
-.reseñas-container {
+.resenas-container {
   width: 100%;
   animation: fadeIn 0.6s ease-in-out;
 }
@@ -11,69 +11,67 @@
    HEADER
 ======================================== */
 
-.reseñas-header {
+.resenas-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
 }
 
-.reseñas-titulo {
+.resenas-titulo {
   font-size: 32px;
   font-weight: 700;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 4px;
-  background: linear-gradient(90deg, #ffffff 0%, #a78bca 100%);
+  background: linear-gradient(90deg, #ffffff 0%, #ffd700 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
-.reseñas-subtitulo {
+.resenas-subtitulo {
   font-size: 14px;
   color: #a78bca;
   font-weight: 600;
 }
 
-.btn-agregar-reseña {
+.btn-agregar-resena {
   padding: 14px 28px;
-  background: linear-gradient(135deg, #e91e8c 0%, #6d28d9 100%);
+  background: linear-gradient(135deg, #ffd700 0%, #e91e8c 100%);
   border: none;
   border-radius: 50px;
-  color: #ffffff;
+  color: #000000;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 4px 20px rgba(233, 30, 140, 0.4);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
 }
 
-.btn-agregar-reseña:hover {
+.btn-agregar-resena:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 30px rgba(233, 30, 140, 0.6);
+  box-shadow: 0 6px 30px rgba(255, 215, 0, 0.6);
 }
 
 /* ========================================
-   LISTA DE RESEÑAS
+   GRID DE RESEÑAS
 ======================================== */
 
-.reseñas-lista {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.grid-resenas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 24px;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
 /* ========================================
    TARJETA DE RESEÑA
 ======================================== */
 
-.reseña-card {
-  display: flex;
-  gap: 20px;
+.tarjeta-resena {
   background: linear-gradient(
     135deg,
     rgba(61, 37, 99, 0.4) 0%,
@@ -84,140 +82,62 @@
   border-radius: 16px;
   padding: 20px;
   transition: all 0.3s ease;
-  animation: slideIn 0.5s ease-out;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
-.reseña-card:hover {
-  border-color: rgba(233, 30, 140, 0.5);
-  box-shadow: 0 8px 30px rgba(109, 40, 217, 0.3);
+.tarjeta-resena:hover {
   transform: translateY(-4px);
+  border-color: rgba(255, 215, 0, 0.4);
+  box-shadow: 0 8px 30px rgba(109, 40, 217, 0.4);
 }
 
-/* ========================================
-   IMAGEN DEL JUEGO
-======================================== */
-
-.reseña-imagen {
-  flex: 0 0 120px;
-  height: 160px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 2px solid rgba(167, 139, 202, 0.3);
-}
-
-.reseña-imagen img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.reseña-card:hover .reseña-imagen img {
-  transform: scale(1.1);
-}
-
-/* ========================================
-   CONTENIDO DE LA RESEÑA
-======================================== */
-
-.reseña-contenido {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.reseña-header-card {
+/* Header de la tarjeta */
+.resena-header-card {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(167, 139, 202, 0.2);
 }
 
-.reseña-juego {
-  font-size: 20px;
+.resena-juego-info {
+  flex: 1;
+}
+
+.resena-juego-titulo {
+  font-size: 18px;
   font-weight: 700;
   color: #ffffff;
+  margin-bottom: 8px;
 }
 
-/* Estrellas */
-.estrellas {
+.resena-estrellas {
   display: flex;
   gap: 4px;
 }
 
-.estrella {
-  font-size: 20px;
-  transition: transform 0.2s ease;
+.estrella-llena {
+  color: #ffd700;
+  font-size: 18px;
+  filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
 }
 
-.estrella.llena {
-  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+.estrella-vacia {
+  color: rgba(255, 215, 0, 0.2);
+  font-size: 18px;
 }
 
-.estrella.vacia {
-  opacity: 0.3;
-  filter: grayscale(100%);
-}
-
-.reseña-card:hover .estrella.llena {
-  transform: scale(1.1);
-}
-
-/* Texto de la reseña */
-.reseña-texto {
-  font-size: 15px;
-  line-height: 1.6;
-  color: #e0d5ff;
-  flex: 1;
-}
-
-/* ========================================
-   FOOTER DE LA RESEÑA
-======================================== */
-
-.reseña-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(167, 139, 202, 0.2);
-}
-
-.reseña-meta {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.meta-item {
-  font-size: 13px;
-  color: #a78bca;
-  font-weight: 600;
-  padding: 6px 12px;
-  background: rgba(61, 37, 99, 0.5);
-  border-radius: 12px;
-}
-
-.meta-item.recomendado {
-  background: rgba(0, 255, 136, 0.2);
-  color: #00ff88;
-  border: 1px solid rgba(0, 255, 136, 0.3);
-}
-
-/* Botones de acción */
-.reseña-acciones {
+/* Acciones */
+.resena-acciones {
   display: flex;
   gap: 8px;
 }
 
-.btn-accion {
+.btn-icono {
   width: 36px;
   height: 36px;
-  background: rgba(61, 37, 99, 0.5);
+  background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(167, 139, 202, 0.3);
   border-radius: 8px;
   font-size: 16px;
@@ -228,19 +148,118 @@
   justify-content: center;
 }
 
-.btn-accion:hover {
+.btn-icono:hover {
+  background: rgba(233, 30, 140, 0.3);
+  border-color: #e91e8c;
   transform: scale(1.1);
-  border-color: rgba(167, 139, 202, 0.6);
 }
 
-.btn-accion.editar:hover {
-  background: rgba(109, 40, 217, 0.5);
-  border-color: #6d28d9;
+.btn-icono.btn-eliminar:hover {
+  background: rgba(255, 71, 87, 0.3);
+  border-color: #ff4757;
 }
 
-.btn-accion.eliminar:hover {
-  background: rgba(255, 0, 0, 0.3);
-  border-color: #ff0000;
+/* Contenido */
+.resena-contenido {
+  margin-bottom: 16px;
+}
+
+.resena-texto {
+  color: #e0d5ff;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* Footer */
+.resena-footer {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.resena-detalle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(61, 37, 99, 0.3);
+  border-radius: 12px;
+  font-size: 12px;
+  color: #a78bca;
+  font-weight: 600;
+}
+
+.resena-detalle.recomendado {
+  background: rgba(0, 255, 136, 0.2);
+  color: #00ff88;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.resena-icono {
+  font-size: 14px;
+}
+
+/* ========================================
+   SIN RESEÑAS
+======================================== */
+
+.sin-resenas {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(61, 37, 99, 0.2) 0%,
+    rgba(26, 15, 46, 0.3) 100%
+  );
+  border-radius: 20px;
+  border: 2px dashed rgba(167, 139, 202, 0.3);
+}
+
+.emoji-grande {
+  font-size: 80px;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.sin-resenas h3 {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.sin-resenas p {
+  font-size: 16px;
+  color: #a78bca;
+}
+
+/* ========================================
+   LOADING Y ERROR
+======================================== */
+
+.loading-container,
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(167, 139, 202, 0.3);
+  border-top-color: #ffd700;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ========================================
@@ -258,53 +277,27 @@
   }
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 /* ========================================
    RESPONSIVE
 ======================================== */
 
 @media (max-width: 768px) {
-  .reseñas-header {
+  .resenas-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
   }
 
-  .btn-agregar-reseña {
+  .btn-agregar-resena {
     width: 100%;
   }
 
-  .reseñas-titulo {
+  .grid-resenas {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .resenas-titulo {
     font-size: 24px;
-  }
-
-  .reseña-card {
-    flex-direction: column;
-  }
-
-  .reseña-imagen {
-    flex: 0 0 auto;
-    width: 100%;
-    height: 200px;
-  }
-
-  .reseña-header-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .reseña-footer {
-    flex-direction: column;
-    align-items: flex-start;
   }
 }

@@ -4,6 +4,9 @@ import './Carrusel.css'
 function Carrusel() {
   const [indiceActivo, setIndiceActivo] = useState(0)
 
+  // Imagen por defecto
+  const imagenPorDefecto = '/juegos/default.png'
+
   // Juegos destacados
   const juegosDestacados = [
     {
@@ -32,24 +35,38 @@ function Carrusel() {
     }
   ]
 
+  // ► Obtener imagen segura con fallback
+  const obtenerImagen = (ruta) => {
+    const img = new Image()
+    img.src = ruta
+
+    // Si falla → devuelve la default
+    img.onerror = () => (img.src = imagenPorDefecto)
+
+    return ruta || imagenPorDefecto
+  }
+
   const siguiente = () => {
     setIndiceActivo((prev) => (prev + 1) % juegosDestacados.length)
   }
 
   const anterior = () => {
-    setIndiceActivo((prev) => 
+    setIndiceActivo((prev) =>
       prev === 0 ? juegosDestacados.length - 1 : prev - 1
     )
   }
+
+  const imagenFondo =
+    obtenerImagen(juegosDestacados[indiceActivo].imagen)
 
   return (
     <div className="carrusel-container">
       <div className="carrusel">
         <div className="carrusel-contenido">
-          <div 
+          <div
             className="carrusel-imagen"
             style={{
-              backgroundImage: `url(${juegosDestacados[indiceActivo].imagen})`,
+              backgroundImage: `url(${imagenFondo})`,
               boxShadow: `0 20px 60px ${juegosDestacados[indiceActivo].color}40`
             }}
           >
@@ -63,7 +80,7 @@ function Carrusel() {
               <p className="carrusel-descripcion">
                 {juegosDestacados[indiceActivo].descripcion}
               </p>
-              
+
               <div className="carrusel-botones">
                 <button className="btn-carrusel btn-primary">
                   ▶ JUGAR AHORA
@@ -83,8 +100,6 @@ function Carrusel() {
             ›
           </button>
         </div>
-
-        {/* Puntos eliminados - ya no aparecen */}
       </div>
     </div>
   )

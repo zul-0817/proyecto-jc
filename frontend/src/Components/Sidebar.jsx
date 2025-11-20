@@ -2,16 +2,13 @@ import { useState } from 'react';
 import './Sidebar.css';
 
 const Sidebar = ({ vistaActual, cambiarVista }) => {
-  const [open, setOpen] = useState(false);
-
-  // Menú de navegación
+  // Menú de navegación actualizado según tus necesidades
   const menuItems = [
-    { id: 'inicio', icon: '🏠', texto: 'Inicio' },
-    { id: 'biblioteca', icon: '📚', texto: 'Biblioteca' },
-    { id: 'favoritos', icon: '⭐', texto: 'Favoritos' },
-    { id: 'estadisticas', icon: '📊', texto: 'Estadísticas' },
-    { id: 'agregar', icon: '➕', texto: 'Agregar' },
-    { id: 'configuracion', icon: '⚙️', texto: 'Configuración' }
+    { id: 'inicio', icon: '🏠', texto: 'Inicio', color: '#e91e8c' },
+    { id: 'biblioteca', icon: '📚', texto: 'Biblioteca', color: '#a78bca' },
+    { id: 'resenas', icon: '⭐', texto: 'Reseñas', color: '#ffd700' },
+    { id: 'agregar-resena', icon: '📝', texto: 'Agregar Reseña', color: '#00d4ff' },
+    { id: 'estadisticas', icon: '📊', texto: 'Estadísticas', color: '#00ff88' }
   ];
 
   const handleClick = (id) => {
@@ -19,31 +16,20 @@ const Sidebar = ({ vistaActual, cambiarVista }) => {
   };
 
   return (
-    <div className={`sidebar ${open ? 'open' : ''}`}>
-      <div className="sidebar-header">
-        <img 
-          className="sidebar-logo" 
-          src="/logo.png" 
-          alt="GameTracker Logo" 
-        />
-        <button 
-          className="toggle-btn"
-          onClick={() => setOpen(!open)}
-          aria-label={open ? "Cerrar menú" : "Abrir menú"}
-        >
-          {open ? '✕' : '☰'}
-        </button>
-      </div>
-
+    <div className="sidebar">
       <nav className="sidebar-nav">
-        {menuItems.map((item) => (
+        {menuItems.map((item, index) => (
           <button 
             key={item.id}
             className={`sidebar-button ${vistaActual === item.id ? 'active' : ''}`}
             onClick={() => handleClick(item.id)}
+            title={item.texto}
+            style={{ 
+              animationDelay: `${index * 0.1}s`,
+              '--icon-color': item.color 
+            }}
           >
             <span className="icon">{item.icon}</span>
-            <span className="text">{item.texto}</span>
           </button>
         ))}
       </nav>
