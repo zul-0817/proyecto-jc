@@ -4,10 +4,8 @@ import './Carrusel.css'
 function Carrusel() {
   const [indiceActivo, setIndiceActivo] = useState(0)
 
-  // Imagen por defecto
   const imagenPorDefecto = '/juegos/default.png'
 
-  // Juegos destacados
   const juegosDestacados = [
     {
       id: 1,
@@ -22,83 +20,56 @@ function Carrusel() {
       titulo: 'GTA V',
       subtitulo: 'GRAND THEFT AUTO',
       descripcion: 'Premium Edition',
-      imagen: '/juegos/gta5.jpg',
+      imagen: '/juegos/gts5.png',
       color: '#00d9ff'
     },
     {
       id: 3,
       titulo: 'MORTAL KOMBAT',
-      subtitulo: '11 ULTIMATE',
+      subtitulo: 'MORTAL KOMBAT',
       descripcion: 'Complete Edition',
-      imagen: '/juegos/mk.jpg',
+      imagen: '/juegos/mortalkombat.png',
       color: '#ffd60a'
     }
   ]
-
-  // ► Obtener imagen segura con fallback
-  const obtenerImagen = (ruta) => {
-    const img = new Image()
-    img.src = ruta
-
-    // Si falla → devuelve la default
-    img.onerror = () => (img.src = imagenPorDefecto)
-
-    return ruta || imagenPorDefecto
-  }
 
   const siguiente = () => {
     setIndiceActivo((prev) => (prev + 1) % juegosDestacados.length)
   }
 
   const anterior = () => {
-    setIndiceActivo((prev) =>
+    setIndiceActivo((prev) => 
       prev === 0 ? juegosDestacados.length - 1 : prev - 1
     )
   }
-
-  const imagenFondo =
-    obtenerImagen(juegosDestacados[indiceActivo].imagen)
 
   return (
     <div className="carrusel-container">
       <div className="carrusel">
         <div className="carrusel-contenido">
-          <div
+          <div 
             className="carrusel-imagen"
             style={{
-              backgroundImage: `url(${imagenFondo})`,
-              boxShadow: `0 20px 60px ${juegosDestacados[indiceActivo].color}40`
+              backgroundImage: `url(${juegosDestacados[indiceActivo].imagen || imagenPorDefecto})`,
+            }}
+            onError={(e) => {
+              e.target.style.backgroundImage = `url(${imagenPorDefecto})`
             }}
           >
             <div className="carrusel-overlay">
-              <h2 className="carrusel-titulo">
-                {juegosDestacados[indiceActivo].titulo}
-              </h2>
-              <h3 className="carrusel-subtitulo">
-                {juegosDestacados[indiceActivo].subtitulo}
-              </h3>
-              <p className="carrusel-descripcion">
-                {juegosDestacados[indiceActivo].descripcion}
-              </p>
-
+              <h2 className="carrusel-titulo">{juegosDestacados[indiceActivo].titulo}</h2>
+              <h3 className="carrusel-subtitulo">{juegosDestacados[indiceActivo].subtitulo}</h3>
+              <p className="carrusel-descripcion">{juegosDestacados[indiceActivo].descripcion}</p>
+              
               <div className="carrusel-botones">
-                <button className="btn-carrusel btn-primary">
-                  ▶ JUGAR AHORA
-                </button>
-                <button className="btn-carrusel btn-secondary">
-                  MÁS INFO
-                </button>
+                <button className="btn-carrusel btn-primary">▶ JUGAR AHORA</button>
+                <button className="btn-carrusel btn-secondary">MÁS INFO</button>
               </div>
             </div>
           </div>
 
-          {/* Botones de navegación */}
-          <button className="carrusel-nav prev" onClick={anterior}>
-            ‹
-          </button>
-          <button className="carrusel-nav next" onClick={siguiente}>
-            ›
-          </button>
+          <button className="carrusel-nav prev" onClick={anterior}>‹</button>
+          <button className="carrusel-nav next" onClick={siguiente}>›</button>
         </div>
       </div>
     </div>
