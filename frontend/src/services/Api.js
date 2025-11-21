@@ -125,3 +125,16 @@ export const eliminarResena = async (id) => {
 };
 
 export default api;
+
+
+// ========== ESTADÍSTICAS ==========
+
+export const obtenerEstadisticas = async () => {
+  try {
+    const response = await api.get('/stats'); // 👈 Ruta correcta del backend
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener estadísticas:', error);
+    throw error;
+  }
+};
