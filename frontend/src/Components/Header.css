@@ -36,7 +36,7 @@
 .saludo {
   font-size: 32px;
   font-weight: 700;
-  color: #ffffff;
+  color: #5c2ea0;
   margin-bottom: 8px;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -52,46 +52,7 @@
   animation: pulse 2s ease-in-out infinite;
 }
 
-.seccion-actual {
-  font-size: 14px;
-  font-weight: 600;
-  color: #a78bca;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
 
-/* ========================================
-   BARRA DE BÚSQUEDA
-======================================== */
-
-.busqueda-header {
-  flex: 0 0 400px;
-}
-
-.input-buscar-header {
-  width: 100%;
-  padding: 14px 24px;
-  background: rgba(61, 37, 99, 0.5);
-  border: 2px solid rgba(167, 139, 202, 0.3);
-  border-radius: 50px;
-  color: #ffffff;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  outline: none;
-}
-
-.input-buscar-header::placeholder {
-  color: rgba(224, 213, 255, 0.6);
-}
-
-.input-buscar-header:focus {
-  border-color: #e91e8c;
-  background: rgba(61, 37, 99, 0.7);
-  box-shadow: 
-    0 0 30px rgba(233, 30, 140, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
 
 /* ========================================
    ANIMACIONES
@@ -129,10 +90,6 @@
     padding: 0 30px;
   }
 
-  .busqueda-header {
-    flex: 1;
-    width: 100%;
-  }
 
   .saludo {
     font-size: 28px;
@@ -157,8 +114,5 @@
     font-size: 12px;
   }
 
-  .input-buscar-header {
-    padding: 12px 20px;
-    font-size: 14px;
-  }
+ 
 }

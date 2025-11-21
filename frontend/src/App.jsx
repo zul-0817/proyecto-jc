@@ -19,16 +19,15 @@ function App() {
       <div className="contenido-principal">
         <Header />
         
-        {/* INICIO - Home con carrusel y reseñas destacadas */}
+        {/* INICIO - Home */}
         {vistaActual === 'inicio' && (
           <>
-            <Busqueda />
             <Carrusel />
-            {/* Aquí puedes agregar un preview de reseñas destacadas si quieres */}
+            {/* aquí puedes agregar reseñas destacadas, si quieres */}
           </>
         )}
         
-        {/* BIBLIOTECA - Búsqueda y colección de juegos */}
+        {/* BIBLIOTECA - Aquí sí va la búsqueda */}
         {vistaActual === 'biblioteca' && (
           <>
             <Busqueda />
@@ -36,10 +35,10 @@ function App() {
           </>
         )}
         
-        {/* RESEÑAS - Ver todas las reseñas */}
+        {/* RESEÑAS */}
         {vistaActual === 'resenas' && <Reseñas />}
         
-        {/* AGREGAR RESEÑA - Formulario para nueva reseña */}
+        {/* AGREGAR RESEÑA */}
         {vistaActual === 'agregar-resena' && (
           <div style={{ padding: '20px' }}>
             <FormularioReseña 
@@ -57,3 +56,4 @@ function App() {
 }
 
 export default App;
+

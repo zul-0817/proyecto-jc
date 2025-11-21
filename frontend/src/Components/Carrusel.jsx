@@ -44,6 +44,7 @@ function Carrusel() {
   }
 
   return (
+    <div className="carrusel-wrapper">
     <div className="carrusel-container">
       <div className="carrusel">
         <div className="carrusel-contenido">
@@ -72,6 +73,7 @@ function Carrusel() {
           <button className="carrusel-nav next" onClick={siguiente}>›</button>
         </div>
       </div>
+    </div>
     </div>
   )
 }

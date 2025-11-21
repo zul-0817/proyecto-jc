@@ -7,7 +7,6 @@ const Sidebar = ({ vistaActual, cambiarVista }) => {
     { id: 'inicio', icon: '🏠', texto: 'Inicio', color: '#e91e8c' },
     { id: 'biblioteca', icon: '📚', texto: 'Biblioteca', color: '#a78bca' },
     { id: 'resenas', icon: '⭐', texto: 'Reseñas', color: '#ffd700' },
-    { id: 'agregar-resena', icon: '📝', texto: 'Agregar Reseña', color: '#00d4ff' },
     { id: 'estadisticas', icon: '📊', texto: 'Estadísticas', color: '#00ff88' }
   ];
 

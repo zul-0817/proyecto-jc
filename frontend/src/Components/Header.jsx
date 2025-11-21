@@ -7,17 +7,9 @@ function Header() {
           <h1 className="saludo">
             ¡HOLA BIENVENIDA, <span className="nombre-usuario">LUZ</span>!
           </h1>
-          <p className="seccion-actual">RECIÉN AGREGADOS</p>
-        </div>
-
-        {/* Barra de búsqueda */}
-        <div className="busqueda-header">
-          <input 
-            type="text" 
-            placeholder="🔍 Buscar juegos..." 
-            className="input-buscar-header"
-          />
-        </div>
+        <div className="content-wrapper">
+      </div>
+      </div>
       </div>
     </header>
   )

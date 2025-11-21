@@ -255,3 +255,41 @@
     font-size: 13px;
   }
 }
+/* Botón eliminar en esquina superior derecha */
+.btn-eliminar-tarjeta {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  background: rgba(239, 68, 68, 0.9);
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 5;
+}
+
+.tarjeta-imagen:hover .btn-eliminar-tarjeta {
+  opacity: 1;
+}
+
+.btn-eliminar-tarjeta:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.8);
+}
+
+/* Botón eliminar en overlay */
+.btn-overlay-eliminar {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.btn-overlay-eliminar:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}

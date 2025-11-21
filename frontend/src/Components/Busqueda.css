@@ -1,7 +1,6 @@
 /* ========================================
    BÚSQUEDA
 ======================================== */
-
 .busqueda-container {
   width: 100%;
   animation: fadeIn 0.6s ease-in-out;
@@ -10,7 +9,6 @@
 /* ========================================
    BARRA DE BÚSQUEDA PRINCIPAL
 ======================================== */
-
 .busqueda-principal {
   position: relative;
   margin-bottom: 40px;
@@ -77,74 +75,8 @@
 }
 
 /* ========================================
-   FILTROS
-======================================== */
-
-.filtros-busqueda {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin-bottom: 30px;
-  padding: 24px;
-  background: linear-gradient(
-    135deg,
-    rgba(61, 37, 99, 0.3) 0%,
-    rgba(26, 15, 46, 0.4) 100%
-  );
-  border-radius: 16px;
-  border: 2px solid rgba(167, 139, 202, 0.2);
-}
-
-.filtro-grupo {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.filtro-label {
-  font-size: 14px;
-  font-weight: 700;
-  color: #a78bca;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.filtro-opciones {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.btn-filtro-busqueda {
-  padding: 10px 24px;
-  background: rgba(61, 37, 99, 0.4);
-  border: 2px solid rgba(167, 139, 202, 0.2);
-  border-radius: 25px;
-  color: #e0d5ff;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-}
-
-.btn-filtro-busqueda:hover {
-  border-color: rgba(167, 139, 202, 0.5);
-  background: rgba(61, 37, 99, 0.6);
-  transform: translateY(-2px);
-}
-
-.btn-filtro-busqueda.activo {
-  background: linear-gradient(135deg, #6d28d9 0%, #e91e8c 100%);
-  border-color: #e91e8c;
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(233, 30, 140, 0.5);
-}
-
-/* ========================================
    RESULTADOS
 ======================================== */
-
 .resultados-info {
   padding: 20px;
   text-align: center;
@@ -159,7 +91,6 @@
 /* ========================================
    ANIMACIONES
 ======================================== */
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -174,32 +105,16 @@
 /* ========================================
    RESPONSIVE
 ======================================== */
-
 @media (max-width: 768px) {
   .busqueda-principal {
     padding: 16px 20px;
   }
-
+  
   .search-icon {
     font-size: 24px;
   }
-
+  
   .input-busqueda-grande {
     font-size: 16px;
-  }
-
-  .filtros-busqueda {
-    padding: 20px;
-  }
-
-  .filtro-opciones {
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: 8px;
-  }
-
-  .btn-filtro-busqueda {
-    padding: 8px 20px;
-    font-size: 13px;
   }
 }

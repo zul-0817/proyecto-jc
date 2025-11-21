@@ -1,0 +1,128 @@
+.notificacion {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  min-width: 300px;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  animation: slideIn 0.3s ease-out;
+  border: 2px solid;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.notificacion-exito {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%);
+  border-color: #10b981;
+}
+
+.notificacion-error {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(220, 38, 38, 0.15) 100%);
+  border-color: #ef4444;
+}
+
+.notificacion-advertencia {
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.15) 0%, rgba(245, 158, 11, 0.15) 100%);
+  border-color: #fbbf24;
+}
+
+.notificacion-info {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.15) 100%);
+  border-color: #3b82f6;
+}
+
+.notificacion-contenido {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #ffffff;
+}
+
+.notificacion-icono {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.notificacion-mensaje {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.notificacion-cerrar {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #ffffff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.notificacion-cerrar:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.notificacion-barra {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 4px;
+  border-radius: 0 0 14px 14px;
+  animation: progreso 3s linear;
+}
+
+.notificacion-exito .notificacion-barra {
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+}
+
+.notificacion-error .notificacion-barra {
+  background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+}
+
+.notificacion-advertencia .notificacion-barra {
+  background: linear-gradient(90deg, #fbbf24 0%, #f59e0b 100%);
+}
+
+.notificacion-info .notificacion-barra {
+  background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+}
+
+@keyframes progreso {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+@media (max-width: 768px) {
+  .notificacion {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
+}

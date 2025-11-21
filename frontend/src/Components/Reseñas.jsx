@@ -146,7 +146,7 @@ function Reseñas() {
 
               {/* Contenido de la reseña */}
               <div className="resena-contenido">
-                <p className="resena-texto">{reseña.textoReseña}</p>
+                <p className="resena-texto">{reseña.textoResena}</p>
               </div>
 
               {/* Footer con info adicional */}
