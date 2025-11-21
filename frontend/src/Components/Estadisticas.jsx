@@ -6,27 +6,15 @@ function Estadisticas() {
   const [estadisticas, setEstadisticas] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Datos estáticos para los gráficos
-  const juegosMasJugados = [
-    { titulo: "GTA V", horas: 350, color: "#00d9ff" },
-    { titulo: "Hollow Knight", horas: 280, color: "#ff6b35" },
-    { titulo: "Mortal Kombat", horas: 220, color: "#ffd60a" },
-    { titulo: "Injustice 2", horas: 180, color: "#e91e8c" },
-    { titulo: "God of War", horas: 150, color: "#6d28d9" },
-  ];
-
-  const generosFavoritos = [
-    { genero: "Acción", porcentaje: 35, color: "#e91e8c" },
-    { genero: "RPG", porcentaje: 28, color: "#6d28d9" },
-    { genero: "Aventura", porcentaje: 20, color: "#00d9ff" },
-    { genero: "Deportes", porcentaje: 12, color: "#ffd60a" },
-    { genero: "Estrategia", porcentaje: 5, color: "#ff6b35" },
-  ];
+  // Colores para los gráficos
+  const coloresBarras = ["#00d9ff", "#ff6b35", "#ffd60a", "#e91e8c", "#6d28d9"];
+  const coloresGeneros = ["#e91e8c", "#6d28d9", "#00d9ff", "#ffd60a", "#ff6b35"];
 
   useEffect(() => {
     const cargar = async () => {
       try {
         const data = await obtenerEstadisticas();
+        console.log("Estadísticas recibidas:", data); // Para debug
         setEstadisticas(data);
       } catch (error) {
         console.error("Error cargando estadísticas:", error);
@@ -46,6 +34,13 @@ function Estadisticas() {
 
   if (loading) return <p>Cargando estadísticas...</p>;
   if (!estadisticas) return <p>Error al cargar estadísticas.</p>;
+
+  // Datos dinámicos del Top 5
+  const juegosMasJugados = estadisticas.top5Juegos || [];
+  const maxHoras = juegosMasJugados[0]?.horas || 1;
+
+  // Datos dinámicos de géneros
+  const generosFavoritos = estadisticas.generosFavoritos || [];
 
   return (
     <div className="estadisticas-container">
@@ -107,25 +102,29 @@ function Estadisticas() {
         <div className="grafico-card">
           <h3 className="grafico-titulo">🔥 Top 5 Juegos Más Jugados</h3>
           <div className="barras-container">
-            {juegosMasJugados.map((juego, i) => (
-              <div key={i} className="barra-item">
-                <div className="barra-info">
-                  <span className="barra-label">{juego.titulo}</span>
-                  <span className="barra-valor">{juego.horas}h</span>
+            {juegosMasJugados.length > 0 ? (
+              juegosMasJugados.map((juego, i) => (
+                <div key={i} className="barra-item">
+                  <div className="barra-info">
+                    <span className="barra-label">{juego.titulo}</span>
+                    <span className="barra-valor">{juego.horas}h</span>
+                  </div>
+                  <div className="barra-progreso-horizontal">
+                    <div
+                      className="barra-fill"
+                      style={{
+                        width: `${(juego.horas / maxHoras) * 100}%`,
+                        background: coloresBarras[i % coloresBarras.length],
+                      }}
+                    ></div>
+                  </div>
                 </div>
-                <div className="barra-progreso-horizontal">
-                  <div
-                    className="barra-fill"
-                    style={{
-                      width: `${
-                        (juego.horas / juegosMasJugados[0].horas) * 100
-                      }%`,
-                      background: juego.color,
-                    }}
-                  ></div>
-                </div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p style={{ textAlign: 'center', color: '#888', padding: '20px' }}>
+                No hay datos de juegos jugados
+              </p>
+            )}
           </div>
         </div>
 
@@ -133,25 +132,31 @@ function Estadisticas() {
         <div className="grafico-card">
           <h3 className="grafico-titulo">🎯 Géneros Favoritos</h3>
           <div className="circular-stats">
-            {generosFavoritos.map((item, i) => (
-              <div key={i} className="circular-item">
-                <div
-                  className="circular-progreso"
-                  style={{
-                    background: `conic-gradient(${item.color} ${
-                      item.porcentaje * 3.6
-                    }deg, rgba(61, 37, 99, 0.3) 0deg)`,
-                  }}
-                >
-                  <div className="circular-inner">
-                    <span className="circular-porcentaje">
-                      {item.porcentaje}%
-                    </span>
+            {generosFavoritos.length > 0 ? (
+              generosFavoritos.map((item, i) => (
+                <div key={i} className="circular-item">
+                  <div
+                    className="circular-progreso"
+                    style={{
+                      background: `conic-gradient(${
+                        coloresGeneros[i % coloresGeneros.length]
+                      } ${item.porcentaje * 3.6}deg, rgba(61, 37, 99, 0.3) 0deg)`,
+                    }}
+                  >
+                    <div className="circular-inner">
+                      <span className="circular-porcentaje">
+                        {item.porcentaje}%
+                      </span>
+                    </div>
                   </div>
+                  <p className="circular-label">{item.genero}</p>
                 </div>
-                <p className="circular-label">{item.genero}</p>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p style={{ textAlign: 'center', color: '#888', padding: '20px', gridColumn: '1 / -1' }}>
+                No hay datos de géneros
+              </p>
+            )}
           </div>
         </div>
 
@@ -215,6 +220,3 @@ function Estadisticas() {
 }
 
 export default Estadisticas;
-
-
-
