@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+// Usar variable de entorno para la URL de la API
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 // Configuración de axios
 const api = axios.create({
@@ -26,7 +27,7 @@ export const obtenerJuegos = async () => {
 // Obtener un juego por ID
 export const obtenerJuegoPorId = async (id) => {
   try {
-    const response = await api.get(`/juegos/${id}`); // ✅ CORREGIDO
+    const response = await api.get(`/juegos/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error al obtener juego:', error);
@@ -48,7 +49,7 @@ export const crearJuego = async (juegoData) => {
 // Actualizar juego
 export const actualizarJuego = async (id, juegoData) => {
   try {
-    const response = await api.put(`/juegos/${id}`, juegoData); // ✅ CORREGIDO
+    const response = await api.put(`/juegos/${id}`, juegoData);
     return response.data;
   } catch (error) {
     console.error('Error al actualizar juego:', error);
@@ -59,7 +60,7 @@ export const actualizarJuego = async (id, juegoData) => {
 // Eliminar juego
 export const eliminarJuego = async (id) => {
   try {
-    const response = await api.delete(`/juegos/${id}`); // ✅ CORREGIDO
+    const response = await api.delete(`/juegos/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error al eliminar juego:', error);
@@ -83,7 +84,7 @@ export const obtenerResenas = async () => {
 // Obtener reseñas de un juego específico
 export const obtenerResenasPorJuego = async (juegoId) => {
   try {
-    const response = await api.get(`/resenas/juego/${juegoId}`); // ✅ CORREGIDO
+    const response = await api.get(`/resenas/juego/${juegoId}`);
     return response.data;
   } catch (error) {
     console.error('Error al obtener reseñas del juego:', error);
@@ -105,7 +106,7 @@ export const crearResena = async (resenaData) => {
 // Actualizar reseña
 export const actualizarResena = async (id, resenaData) => {
   try {
-    const response = await api.put(`/resenas/${id}`, resenaData); // ✅ CORREGIDO
+    const response = await api.put(`/resenas/${id}`, resenaData);
     return response.data;
   } catch (error) {
     console.error('Error al actualizar reseña:', error);
@@ -116,7 +117,7 @@ export const actualizarResena = async (id, resenaData) => {
 // Eliminar reseña
 export const eliminarResena = async (id) => {
   try {
-    const response = await api.delete(`/resenas/${id}`); // ✅ CORREGIDO
+    const response = await api.delete(`/resenas/${id}`);
     return response.data;
   } catch (error) {
     console.error('Error al eliminar reseña:', error);
@@ -124,17 +125,16 @@ export const eliminarResena = async (id) => {
   }
 };
 
-export default api;
-
-
 // ========== ESTADÍSTICAS ==========
 
 export const obtenerEstadisticas = async () => {
   try {
-    const response = await api.get('/stats'); // 👈 Ruta correcta del backend
+    const response = await api.get('/stats');
     return response.data;
   } catch (error) {
     console.error('Error al obtener estadísticas:', error);
     throw error;
   }
 };
+
+export default api;
